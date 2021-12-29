@@ -1,13 +1,11 @@
-from flask import Flask
+from flask import Flask ,render_template   # 랜더 템플릿 추가
 app = Flask(__name__)
 
-@app.route('/')               #홈페이지 메인 localhost:5000
+@app.route('/')
 def home():
-   return 'This is Home!'
+   return render_template('index.html')    # 랜더 템플릿(html 파일)
 
-@app.route('/mypage')         #' /mypage ' 로 수정
-def mypage():                 # mypage 로 수정
-   return 'mypage 입니다'
+
 
 if __name__ == '__main__':  
    app.run('0.0.0.0',port=5000,debug=True)
