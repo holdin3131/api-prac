@@ -4,16 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--    제이쿼리 임포트-->
     <title>Document</title>
+
+
 
     <script>
         function hey() {
-            alert('안녕!')
+            $.ajax({
+                type: "POST",
+                url: "/test",
+                data: {title_give: '봄날은간다'},
+                success: function (response) {
+                    console.log(response['msg'])
+                }      //app.py 내 post method 의 리턴값중 'msg'만 출력
+            })
+
+        }
+        function hey_01(){
+            $.ajax({
+                type: "GET",
+                url: "/test?title_give=봄날은간다",
+                data: {},
+                success: function (response) {
+                    console.log(response)
+                }
+            })
         }
     </script>
 </head>
 <body>
 <h1> my FIRST html render</h1>
-<button onclick="hey()">나는 버튼!</button>
+<button onclick="hey()">나는 post버튼!</button>
+<button onclick="hey_01()">나는 get버튼!</button>
 </body>
 </html>
